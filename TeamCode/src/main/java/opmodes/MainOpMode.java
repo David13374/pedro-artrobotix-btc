@@ -16,10 +16,6 @@ public class MainOpMode extends LinearOpMode {
     Intake intake;
     @Override
     public void runOpMode() {
-
-        ColorDetection.Team team = ColorDetection.Team.RED;
-        Intake intake;
-        GamepadEx gamepad1Ex;
         gamepad1Ex = new GamepadEx(gamepad1);
         intake = new Intake(hardwareMap, team);
         while (opModeInInit()) {
