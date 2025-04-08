@@ -14,6 +14,8 @@ import classes.Intake;
 public class MainOpMode extends LinearOpMode {
 
     Intake intake;
+    GamepadEx gamepad1Ex;
+    ColorDetection.Team team;
     @Override
     public void runOpMode() {
         gamepad1Ex = new GamepadEx(gamepad1);
