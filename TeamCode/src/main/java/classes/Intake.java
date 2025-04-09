@@ -10,13 +10,14 @@ public class Intake {
     DcMotorEx motor;
     ColorDetection colorDetect;
 
+
     enum State {
         OUT,
         IN,
         STOP
     }
 
-    State currentState;
+    public State currentState;
 
     public static double inPower = -1, outPower = 0.75;
 
@@ -31,6 +32,7 @@ public class Intake {
     public double getBlue() {
         return colorDetect.getBlue();
     }
+    public double getGreen() {return colorDetect.getGreen();}
 
     public void updateTeam(ColorDetection.Team team) {
         colorDetect.updateTeam(team);
@@ -47,17 +49,13 @@ public class Intake {
         if(timer.milliseconds() > outTime) {
             if (reset)
                 reset = false;
-            currentState = colorDetect.getState();
         }
+        currentState = colorDetect.getState();
         switch(currentState) {
             case IN:
                 motor.setPower(inPower);
                 break;
             case OUT:
-                if(!reset) {
-                    reset = true;
-                    timer.reset();
-                }
                 motor.setPower(outPower);
                 break;
             case STOP:
